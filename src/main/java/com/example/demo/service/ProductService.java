@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.exception.ProductNotFoundException;
 import com.example.demo.model.Product;
 import com.example.demo.repository.Productrepo;
 
@@ -18,7 +19,11 @@ public class ProductService {
 	
 	
 	public List<Product> getProduct() {
-		// TODO Auto-generated method stub
+		
+		
+		if(repo.findAll().isEmpty()) {
+			throw new ProductNotFoundException("Data are not found");
+		}
 		return repo.findAll();
 		
 	}
