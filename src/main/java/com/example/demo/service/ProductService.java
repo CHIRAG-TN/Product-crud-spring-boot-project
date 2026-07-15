@@ -20,27 +20,29 @@ public class ProductService {
 	
 	public List<Product> getProduct() {
 		
-		
 		if(repo.findAll().isEmpty()) {
-			throw new ProductNotFoundException("Data are not found");
+			throw new ProductNotFoundException("No products in database");
 		}
 		return repo.findAll();
 		
 	}
 
 	public void postProduct(Product prod1) {
-		// TODO Auto-generated method stub
+
 		repo.save(prod1);
 	}
 
 	
 	public void deleteProduct(int prodId) {
-		// TODO Auto-generated method stub
+
+		if(repo.findById(prodId).isEmpty()) {
+			throw new ProductNotFoundException("No product in database to delete");
+		}
 		repo.deleteById(prodId);;
 	}
 
 	public void putProduct(Product prod1) {
-		// TODO Auto-generated method stub
+
 		repo.save(prod1);
 	}
 	
