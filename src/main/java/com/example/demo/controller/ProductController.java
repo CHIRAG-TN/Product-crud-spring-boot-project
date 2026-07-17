@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,9 @@ import org.springframework.web.service.annotation.PutExchange;
 
 import com.example.demo.model.Product;
 import com.example.demo.service.ProductService;
+
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 @RestController
@@ -29,7 +33,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/product")
-	public void postproduct(@RequestBody Product prod1) {
+	public void postproduct(@RequestBody @Valid Product prod1) {
 		service.postProduct(prod1);
 	}
 	

@@ -1,9 +1,11 @@
 package com.example.demo.model;
 
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
 
 @Component
 @Entity
@@ -11,6 +13,7 @@ public class Product{
 
 	@Id
 	private int productId;
+	@NotEmpty
 	private String productName;
 	private int productprice;
 	private String ram;
