@@ -15,11 +15,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig {
 
-	@Bean
+	//@Bean
 	public SecurityFilterChain enablesecurity(HttpSecurity http) throws Exception {
 		
 		http.csrf(customizer -> customizer.disable())
@@ -30,13 +30,13 @@ public class SecurityConfig {
 		return http.build();
 	}
 	
-	@Bean
+	//@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
 	
-	@Bean
+	//@Bean
 	public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
 		
 		UserDetails user1= User.withUsername("user1")
@@ -44,8 +44,8 @@ public class SecurityConfig {
 									 .build();
 		
 		UserDetails user2= User.withUsername("user2")
-				 .password(passwordEncoder.encode("1234567"))
-				 .build();
+				 					 .password(passwordEncoder.encode("1234567"))
+				 					 .build();
 		
 		return new InMemoryUserDetailsManager(user1,user2);
 		

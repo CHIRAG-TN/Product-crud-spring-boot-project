@@ -37,8 +37,8 @@ public class ProductController {
 		service.postProduct(prod1);
 	}
 	
-	@PutMapping("/product")
-	public void putProduct(@RequestBody Product prod1) {
+	@PutMapping("/product/{prodId}")
+	public void putProduct(@RequestBody Product prod1,@PathVariable int prodId) {
 		service.putProduct(prod1);
 	}
 	
